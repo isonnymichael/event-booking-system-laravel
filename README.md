@@ -22,3 +22,5 @@ Simple application where users can create, manage, and book events.
 - Clone file .env.example and rename to .env
 - Create database name: event_booking_system_db
 - Run : php artisan migrate
+- Run : php artisan db:seed --class=UserSeeder
+- Run : php artisan serve

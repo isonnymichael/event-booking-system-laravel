@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Simple API to get list and detail Event
+Route::controller(EventAPIController::class)->group(function(){
+    Route::get('/events','allEvent')->name("listEventAPI");
+    Route::get('/event/{id}','detailEvent')->name("detailEventAPI")->where('id', '[0-9]+');
 });
