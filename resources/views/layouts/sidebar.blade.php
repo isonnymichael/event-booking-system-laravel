@@ -1,9 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 <!-- Brand Logo -->
-<a href="index3.html" class="brand-link">
-    <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+<a href="/dashboard" class="brand-link d-flex justify-content-center">
+    <img src="/img/savinc-logo.png" alt="SAVINC Logo" class="brand-image elevation-3">
 </a>
 
 <!-- Sidebar -->
@@ -63,14 +62,23 @@
                 </ul>
             </li>
 
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a href="/calendar" class="nav-link {{ request()->is('calendar') ? 'active' : ''}}">
                     <i class="nav-icon fas fa-calendar-alt"></i>
                     <p>
                     Calendar
                     </p>
                 </a>
-            </li> --}}
+            </li>
+
+            <li class="nav-item">
+                <a href="/profile" class="nav-link {{ request()->is('profile') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-user-cog"></i>
+                    <p>
+                    Profile
+                    </p>
+                </a>
+            </li>
 
         </ul>
     </nav>
@@ -117,19 +125,19 @@
                 <a href="/users" class="nav-link {{ request()->is('users') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                    Members
+                    Users
                     </p>
                 </a>
             </li>
 
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a href="/calendar" class="nav-link {{ request()->is('calendar') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-calendar-alt"></i>
                     <p>
                     Calendar
                     </p>
                 </a>
-            </li> --}}
+            </li>
 
         </ul>
     </nav>

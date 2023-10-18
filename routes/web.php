@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
@@ -55,3 +56,7 @@ Route::prefix('event')->middleware('auth')->group(function () {
 // Users
 Route::get('/users', [UserController::class,'allUsers'])->name('users')->middleware([OnlyAdminMiddleware::class, Authenticate::class]);
 // Enf of Users
+
+Route::get('/calendar', [CalendarController::class,'calendar'])->name('calendar')->middleware('auth');
+Route::get('/profile', [UserController::class,'profile'])->name('profile')->middleware('auth');
+Route::post('/profile', [UserController::class,'updateProfile'])->name('updateProfile')->middleware('auth');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Notifications\EventBookingNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -247,6 +249,41 @@ class EventController extends Controller
             return back();
         }
 
+        $event = DB::table("event")->where("id","=",$request->input("event_id"))->first();
+        $user = DB::table("users")->where("id","=",Auth::user()->id)->first();
+        $owner = User::find($event->created_by_user_id);
+        $messages['header'] = "Hello ".$owner->name.",someone has booked your event.";
+        $messages['content'] = '<p>
+        <br>
+        </p>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Event</td>
+                        <td>'.$event->title.'</td>
+                    </tr>
+                    <tr>
+                        <td>Start</td>
+                        <td>'.Carbon::parse($event->date)->formatLocalized('%a, %d %b %Y')." ".Carbon::parse($event->time)->format('H:i').'</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>'.$event->location.'</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>'.$user->name.'</td>
+                    </tr>
+                    <tr>
+                        <td>Booked At</td>
+                    <td>'.Carbon::parse($datas['booked_at'])->formatLocalized('%a, %d %b %Y')." ".Carbon::parse($datas['booked_at'])->format('H:i').'</td>
+                    </tr>
+                </tbody>
+            </table>
+        <p><br></p>';
+
+        $owner->notify(new EventBookingNotification($messages));
+        
         Session::flash('status', 'Success booking event');
         return back();
     }

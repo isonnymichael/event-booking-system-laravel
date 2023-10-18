@@ -15,27 +15,27 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">{{$title}}</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    @foreach ($breadcrumbs as $b)
-                        <li @class(["breadcrumb-item","active" => empty($b['link'])])>
-                        @if (empty($b['link']))
-                        {{$b['title']}}
-                        @else
-                        <a href="{{$b['link']}}">{{$b['title']}}</a>
-                        @endif
-                        </li>
-                    @endforeach
-                </ol>
-            </div>
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h1 class="m-0">{{$title}}</h1>
           </div>
-        </div><!-- /.container-fluid -->
-      </section>
+          <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                  @foreach ($breadcrumbs as $b)
+                      <li @class(["breadcrumb-item","active" => empty($b['link'])])>
+                      @if (empty($b['link']))
+                      {{$b['title']}}
+                      @else
+                      <a href="{{$b['link']}}">{{$b['title']}}</a>
+                      @endif
+                      </li>
+                  @endforeach
+              </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
   
       <!-- Main content -->
       <section class="content pb-5">
@@ -57,7 +57,7 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{$loop->iteration}}.</td>
-                            <td>{{$user->name}}</td>
+                            <td><a href="/profile?id={{$user->id}}">{{$user->name}}</a></td>
                             <td>{{$user->email}}</td>
                             <td>{{\Carbon\Carbon::parse($user->created_at)->formatLocalized('%a, %d %b %Y')}} 
                                 {{\Carbon\Carbon::parse($user->created_at)->format('H:i') }}</td>
