@@ -2,14 +2,6 @@
 
 Simple application where users can create, manage, and book events.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
 ## Requirement
 
 - laravel v10.2.3
@@ -27,10 +19,14 @@ Simple application where users can create, manage, and book events.
 - Run : php artisan serve
 - Access Admin : admin@gmail.com | superadmin88
 
-If you want to use notification system, please change on .env to your credintials
+If you want to use notification system, please change on .env to your credentials
 
 MAIL_MAILER=smtp
+
 MAIL_HOST=sandbox.smtp.mailtrap.io
+
 MAIL_PORT=2525
+
 MAIL_USERNAME={your username}
+
 MAIL_PASSWORD={your password}
